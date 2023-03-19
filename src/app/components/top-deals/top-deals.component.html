@@ -1,0 +1,20 @@
+<div class="container mt-4 ">
+
+  <owl-carousel-o [options]="customOptions">
+
+    <ng-container *ngFor="let slide of TopDeals">
+      <ng-template carouselSlide [id]="slide.id">
+        <div class="card shadow" style="width: 18rem;">
+          <img [src]="slide.productImageSlug[0]" class="" alt="..." height="250" width="200">
+          <div class="card-body">
+            <h5 class="card-title card-description" [title]="slide.description">{{slide.description}}</h5>
+            <p class="card-text">{{slide.type}}</p>
+            <p class="card-text">MRP ₹ &nbsp;<span class="me-2 text-decoration-line-through" *ngIf="slide.actualPrice != slide.discountPrice">{{slide.actualPrice}}</span>{{slide.discountPrice}}</p><button type="button" class="btn btn-outline-primary">Add</button>
+           
+          </div>
+        </div>
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>
+</div>

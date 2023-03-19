@@ -1,0 +1,63 @@
+<div class="container-fluid p-4 bg-primary text-white">
+    <div class="row">
+  <h3 class="text-center fw-semibold">Get Huge Savings on Medicines</h3>
+  
+    </div>
+    <div class="d-flex flex-row justify-content-center mb-3">
+        <div class="p-2 "><i class="bi bi-check-circle me-1  "></i>100 % Genuine Medicines</div>
+        <div class="p-2"><i class="bi bi-check-circle me-1"></i>Trusted Pharmacies</div>
+        <div class="p-2"><i class="bi bi-check-circle me-1"></i>Delivery to your doorstep</div>
+         <div class="p-2"><i class="bi bi-check-circle me-1"></i>Store Pick up</div>
+      </div>
+
+</div>
+
+<div class="container w-75 box-position ">
+    <div class="input-group input-group-lg rounded-3">
+        <span class="input-group-text search-heading" id="inputGroup-sizing-lg ">{{showDefaultMessage ?  "Bengaluru 560029": pinCodeDetails?.pincodeCity + " "+pinCodeDetails?.pincode  }}<i class="bi bi-chevron-down ms-1 " data-bs-toggle="modal" data-bs-target="#exampleModal"></i></span>
+        <input type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg" placeholder="search medicines">
+            <span class="input-group-text search-heading text-primary" id="inputGroup-sizing-lg "><i class="bi bi-search me-1"></i>search</span>
+    </div>
+
+</div>
+
+<div class="container  mt-4 home-container ">
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="	https://www.medibuddy.in/assets/banners/medicine-page.webp" class="d-block w-100" alt="...">
+            </div>
+</div>
+
+<div class="container mt-4">
+ <app-top-deals></app-top-deals>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Location</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label for="validationCustom01" class="form-label">select your location</label>
+    <input type="text" class="form-control" id="validationCustom01" value="" [(ngModel)]="pincode" maxlength="6" required>
+    <div class="invalid-feedback d-block" *ngIf="DisplayErrorMessage">
+      no providers available at this location
+    </div>
+      </div>
+      <div class="d-grid gap-2 m-4">
+        <button class="btn btn-primary " type="button" (click)="VeryfyPincode()">submit</button>
+       
+      </div>
+      
+    </div>
+  </div>
+</div>
