@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HttpService } from 'src/app/core/services/http.service';
 
 @Component({
@@ -11,6 +11,8 @@ export class MedicineHomeComponent implements OnInit{
   pinCodeDetails:any="";
   DisplayErrorMessage:boolean=false;
   showDefaultMessage:boolean=true;
+
+  @ViewChild('Closebtn') Closebtn!:ElementRef;
   constructor(private http:HttpService){ }
   ngOnInit(): void {
    
@@ -23,6 +25,8 @@ export class MedicineHomeComponent implements OnInit{
       this.pinCodeDetails=el[0]
       this.DisplayErrorMessage=false;
       this.showDefaultMessage=false;
+
+      this.Closebtn.nativeElement.click()
       }else{
         this.DisplayErrorMessage=true;
         this.showDefaultMessage=true;

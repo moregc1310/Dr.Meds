@@ -36,6 +36,10 @@
 </div>
 
 <div class="container mt-4">
+  <div class="clearfix">
+  <h4 class="float-start">Top Deals</h4>
+  <a class="text-decoration-none float-end cursor" routerLink="/top-deals-by-category">View all</a>    
+  </div>
  <app-top-deals></app-top-deals>
 </div>
 
@@ -44,7 +48,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Location</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #Closebtn></button>
       </div>
       <div class="modal-body">
         <label for="validationCustom01" class="form-label">select your location</label>
