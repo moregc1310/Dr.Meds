@@ -10,9 +10,27 @@
             </a>
             <div class="text-end   ">
                 <a  class="text-decoration-none me-2">About us</a>
-                <a  class="text-decoration-none ms-2">login</a>
+                <a  class="text-decoration-none ms-2 cursor" data-bs-toggle="modal" data-bs-target="#loginModal">login</a>
             </div>
         </div>
     </nav>
 </div>
 
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{actionName === 'signUp'? 'signUp': 'signin'}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <app-signin *ngIf="actionName === 'signIn'"></app-signin>
+         <app-signup *ngIf="actionName === 'signUp'"></app-signup>
+        </div>
+        <div class="d-grid gap-2 m-4">
+            <button class="btn btn-primary" type="button" *ngIf="actionName === 'signUp'" (click)="changeAction('signIn')">Sign In</button>
+            <button class="btn btn-primary" type="button" *ngIf="actionName === 'signIn'" (click)="changeAction('signUp')">Sign Up</button>
+          </div>
+      </div>
+    </div>
+  </div>

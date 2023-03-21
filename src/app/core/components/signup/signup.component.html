@@ -1,0 +1,35 @@
+<form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+    <div class="mb-3">
+      <label for="uName" class="form-label">User Name</label>
+      <input type="text" class="form-control" id="uName" formControlName="userName">
+      
+    </div>
+    <label for="MobNo" class="form-label">Mobile No.</label>
+    <div class="mb-3 input-group">
+      
+      <input type="text" class="form-control" id="MobNo"  formControlName="mobNo">
+      <span class="input-group-text" (click)="getOtp()"><a>Get OTp</a></span>
+    </div>
+    <div *ngIf="isGetOtp">
+        <label for="MobNo" class="form-label"> OTP</label>
+        <div class="mb-3 input-group" >
+            
+            <input type="text" class="form-control" id="MobNo" >
+            <span class="input-group-text" (click)="Verifyotp()"><a>Verify OTp</a></span>
+          </div>
+          <div>Otp Is Valid For {{OtpCounter}}</div>
+    </div>
+    
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password"  formControlName="password">
+      </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="submit">Submit</button>
+        
+      </div>
+  </form>
