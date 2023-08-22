@@ -1,5 +1,5 @@
 import { HttpParams } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 
@@ -13,6 +13,9 @@ export class SigninComponent implements OnInit {
   signInForm!:FormGroup;
   loginData:any;
   isNewUser:boolean=false;
+
+@Output() emitAction:EventEmitter<any> = new EventEmitter(false);
+
   constructor(private fb:FormBuilder,private http:HttpService){ }
   ngOnInit(): void {
     this.initialize();
@@ -35,6 +38,10 @@ export class SigninComponent implements OnInit {
       if (el && el.length > 0) {
         this.loginData = el;
         this.isNewUser = false;
+        let authToken ="qwertyuiop"
+        localStorage.setItem("auth-token",authToken);
+        localStorage.setItem("userDetails",JSON.stringify(el[0]));
+        this.emitAction.emit(true);
       } else {
         this.isNewUser = true;
       }

@@ -23,5 +23,9 @@ getDataFromServerByQueryParams(endpoint:string,httpParams:HttpParams){
   return this.http.get(url,{headers:this.httpHeaders,params:httpParams})
 }
 
+postDataToServer(endpoint:string,data:any){
+  const url= this.baseUrl + endpoint ;
+ return this.http.post(url,data,{headers:this.httpHeaders});
+}
 
 }

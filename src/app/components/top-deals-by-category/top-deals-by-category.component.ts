@@ -26,4 +26,8 @@ export class TopDealsByCategoryComponent implements OnInit{
       })
   }
 
+  addToCart(items:any){
+    
+  }
+
 }

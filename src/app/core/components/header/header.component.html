@@ -10,7 +10,9 @@
             </a>
             <div class="text-end   ">
                 <a  class="text-decoration-none me-2">About us</a>
-                <a  class="text-decoration-none ms-2 cursor" data-bs-toggle="modal" data-bs-target="#loginModal">login</a>
+                <a  class="text-decoration-none ms-2 cursor" data-bs-toggle="modal" data-bs-target="#loginModal" *ngIf="!isUserLoggedIn">login</a>
+                <span class="text-decoration-none ms-2 cursor" *ngIf="isUserLoggedIn">{{userDetails?.userName}}</span>
+                <i class="bi bi-cart ms-3 fs-5 cursor" routerLink="/cart"></i><span class="text-dark rounded-circle  cart">{{cartCounter}}</span>
             </div>
         </div>
     </nav>
@@ -21,10 +23,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">{{actionName === 'signUp'? 'signUp': 'signin'}}</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" #closeBtn></button>
         </div>
         <div class="modal-body">
-         <app-signin *ngIf="actionName === 'signIn'"></app-signin>
+         <app-signin *ngIf="actionName === 'signIn'" (emitAction)="getAction($event)"></app-signin>
          <app-signup *ngIf="actionName === 'signUp'"></app-signup>
         </div>
         <div class="d-grid gap-2 m-4">
@@ -34,3 +36,5 @@
       </div>
     </div>
   </div>
+
+  

@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HttpService } from 'src/app/core/services/http.service';
+import { TopDealsComponent } from '../top-deals/top-deals.component';
 
 @Component({
   selector: 'app-medicine-home',
@@ -11,8 +12,11 @@ export class MedicineHomeComponent implements OnInit{
   pinCodeDetails:any="";
   DisplayErrorMessage:boolean=false;
   showDefaultMessage:boolean=true;
+  filterData:any;
+  searchTerm:string='';
 
   @ViewChild('Closebtn') Closebtn!:ElementRef;
+  @ViewChild(TopDealsComponent)topdeals:TopDealsComponent | undefined ;
   constructor(private http:HttpService){ }
   ngOnInit(): void {
    
@@ -32,6 +36,13 @@ export class MedicineHomeComponent implements OnInit{
         this.showDefaultMessage=true;
       }
     })
+  }
+
+
+  onSearch(){
+    this.filterData=this.topdeals?.TopDeals.filter(item=>
+      item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
   }
 
 

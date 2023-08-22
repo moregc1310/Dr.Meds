@@ -1,4 +1,11 @@
-<form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+<div class="row">
+  <div class="alert alert-danger" role="alert" *ngIf="signUpForm.valid && !isOtpVerified">
+   please, validate your mobile number
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="isIncorrectOtp">
+    OTP is invalid
+   </div>
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
     <div class="mb-3">
       <label for="uName" class="form-label">User Name</label>
       <input type="text" class="form-control" id="uName" formControlName="userName">
@@ -8,28 +15,45 @@
     <div class="mb-3 input-group">
       
       <input type="text" class="form-control" id="MobNo"  formControlName="mobNo">
-      <span class="input-group-text" (click)="getOtp()"><a>Get OTp</a></span>
+      <span *ngIf="!isOtpVerified" class="input-group-text" (click)="getOtp()"><a>Get OTp</a></span>
+      <span *ngIf="isOtpVerified" class="input-group-text text-success" ><i class="bi bi-check2-circle"></i></span>
     </div>
     <div *ngIf="isGetOtp">
         <label for="MobNo" class="form-label"> OTP</label>
         <div class="mb-3 input-group" >
             
-            <input type="text" class="form-control" id="MobNo" >
-            <span class="input-group-text" (click)="Verifyotp()"><a>Verify OTp</a></span>
+            <input type="text" class="form-control" id="MobNo" #otp>
+            <span class="input-group-text cursor" (click)="Verifyotp(otp.value)"><a>Verify OTp</a></span>
           </div>
-          <div>Otp Is Valid For {{OtpCounter}}</div>
+          <div>Otp Is Valid For {{OtpCounter}}s</div>
     </div>
     
     <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password"  formControlName="password">
+        <!-- <div class="text-danger" *ngIf="signUpForm.errors?.['isPasswordMisMatch']">
+          <div>Password and ConfirmPassword is not same </div>
+        </div> -->
       </div>
+      <!-- *ngIf="SignUpform.controls['confirmPassword'].errors?.['ispasswordmismatch']" -->
+      
+      <div class="mb-3">
+        <label for="password" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="password"  formControlName="confirmPassword">
+        <div class="text-danger" *ngIf="signUpForm.controls['confirmPassword'].errors?.['isPasswordMisMatch']">
+          <div>Password and ConfirmPassword is not same </div>
+        </div>
+      </div>
+      
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
     <div class="d-grid gap-2">
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="signUpForm.invalid">Submit</button>
         
       </div>
   </form>
+</div>
+
+

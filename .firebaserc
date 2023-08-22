@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ang-meds": {
+      "hosting": {
+        "Dr.Meds": [
+          "ang-meds"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ang-meds"
+  }
+}

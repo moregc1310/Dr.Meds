@@ -17,7 +17,7 @@
         <div class="card-body">
           <h5 class="card-title card-description" [title]="slide.description">{{slide.description}}</h5>
           <p class="card-text">{{slide.type}}</p>
-          <p class="card-text">MRP ₹ &nbsp;<span class="me-2 text-decoration-line-through" *ngIf="slide.actualPrice != slide.discountPrice">{{slide.actualPrice}}</span>{{slide.discountPrice}}</p><button type="button" class="btn btn-outline-primary">Add</button>
+          <p class="card-text">MRP ₹ &nbsp;<span class="me-2 text-decoration-line-through" *ngIf="slide.actualPrice != slide.discountPrice">{{slide.actualPrice}}</span>{{slide.discountPrice}}</p><button type="button" class="btn btn-outline-primary" (click)="addToCart(slide)">Add</button>
          
         </div>
       </div>

@@ -31,7 +31,7 @@
             ],
             "styles": [
               "src/styles.scss",
-             "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -97,6 +97,16 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Dr.Meds:build:production",
+            "firebaseProject": "ang-meds",
+            "firebaseHostingSite": "ang-meds"
           }
         }
       }

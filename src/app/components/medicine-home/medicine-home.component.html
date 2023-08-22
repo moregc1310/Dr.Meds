@@ -16,8 +16,8 @@
     <div class="input-group input-group-lg rounded-3">
         <span class="input-group-text search-heading" id="inputGroup-sizing-lg ">{{showDefaultMessage ?  "Bengaluru 560029": pinCodeDetails?.pincodeCity + " "+pinCodeDetails?.pincode  }}<i class="bi bi-chevron-down ms-1 " data-bs-toggle="modal" data-bs-target="#exampleModal"></i></span>
         <input type="text" class="form-control" aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-lg" placeholder="search medicines">
-            <span class="input-group-text search-heading text-primary" id="inputGroup-sizing-lg "><i class="bi bi-search me-1"></i>search</span>
+            aria-describedby="inputGroup-sizing-lg" placeholder="search medicines" [(ngModel)]="searchTerm" (keyup)="onSearch()">
+            <span class="input-group-text search-heading text-primary" id="inputGroup-sizing-lg " ><i class="bi bi-search me-1"></i>search</span>
     </div>
 
 </div>
@@ -40,7 +40,7 @@
   <h4 class="float-start">Top Deals</h4>
   <a class="text-decoration-none float-end cursor" routerLink="/top-deals-by-category">View all</a>    
   </div>
- <app-top-deals></app-top-deals>
+ <app-top-deals [TopDeals]="filterData"></app-top-deals>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

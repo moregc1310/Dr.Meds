@@ -15,6 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TopDealsByCategoryComponent } from './components/top-deals-by-category/top-deals-by-category.component';
 import { ViewProductDetailsComponentComponent } from './components/view-product-details-component/view-product-details-component.component';
 import { ViewProductDetailsHeaderComponent } from './components/view-product-details-header/view-product-details-header.component';
+import { RouterModule } from '@angular/router';
+import { GoldComponent } from './components/gold/gold.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ViewProductDetailsHeaderComponent } from './components/view-product-det
         TopDealsComponent,
         TopDealsByCategoryComponent,
         ViewProductDetailsComponentComponent,
-        ViewProductDetailsHeaderComponent
+        ViewProductDetailsHeaderComponent,
+        GoldComponent
         
   ],
   imports: [
@@ -36,7 +39,8 @@ import { ViewProductDetailsHeaderComponent } from './components/view-product-det
     CarouselModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+   
   
   ],
   providers: [],
